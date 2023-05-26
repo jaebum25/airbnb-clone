@@ -29,6 +29,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         .delete(`/api/listings/${id}`)
         .then(() => {
           toast.success("Listing deleted");
+          router.refresh();
         })
         .catch((error) => {
           toast.error(error?.response?.data?.error);
