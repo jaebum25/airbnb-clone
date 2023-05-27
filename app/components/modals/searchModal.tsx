@@ -13,15 +13,13 @@ import Heading from "../Heading";
 import Calendar from "../Inputs/Calendar";
 import Counter from "../Inputs/Counter";
 
-type searchModalProps = {};
-
 enum STEPS {
   LOCATION = 0,
   DATE = 1,
   INFO = 2,
 }
 
-const searchModal: React.FC<searchModalProps> = () => {
+const searchModal = () => {
   const router = useRouter();
   const params = useSearchParams;
   const searchModal = useSearchModal();
