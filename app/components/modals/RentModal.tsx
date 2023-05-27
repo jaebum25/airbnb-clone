@@ -8,11 +8,11 @@ import React, { useMemo, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import Heading from "../Heading";
-import CategoryInput from "../Inputs/CategoryInput";
-import Counter from "../Inputs/Counter";
-import CountrySelect from "../Inputs/CountrySelect";
-import ImageUpload from "../Inputs/ImageUpload";
-import Input from "../Inputs/Input";
+import CategoryInput from "../inputs/CategoryInput";
+import Counter from "../inputs/Counter";
+import CountrySelect from "../inputs/CountrySelect";
+import ImageUpload from "../inputs/ImageUpload";
+import Input from "../inputs/Input";
 import { categories } from "../navbar/Categories";
 import Modal from "./Modal";
 
