@@ -23,5 +23,5 @@ User,
 > & {
   createdAt: string;
   updatedAt: string;
-  emailedVerified: string
+  emailedVerified: string | null
 }
