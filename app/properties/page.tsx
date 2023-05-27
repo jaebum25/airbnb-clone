@@ -23,7 +23,7 @@ const PropertiesPage = async () => {
     );
   }
 
-  return <PropertiesClient listings={listings} currenUser={currentUser} />;
+  return <PropertiesClient listings={listings} currentUser={currentUser} />;
 };
 
 export default PropertiesPage;
