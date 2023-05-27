@@ -7,10 +7,10 @@ import { toast } from "react-hot-toast";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
-import { safeReservation, SafeUser } from "../types";
+import { SafeReservation, SafeUser } from "../types";
 
 interface TripsClientProps {
-  reservations: safeReservation[];
+  reservations: SafeReservation[];
   currentUser?: SafeUser;
 }
 
