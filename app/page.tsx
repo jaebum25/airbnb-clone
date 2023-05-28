@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 // 'auto' | 'force-dynamic' | 'error' | 'force-static'
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
@@ -6,32 +6,74 @@ import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
 
+import React, { useEffect, useState } from "react";
+
 interface HomeProps {
   searchParams: IListingsParams;
 }
 
-const Home = async ({ searchParams }: HomeProps) => {
-  const listings = await getListings(searchParams);
-  const currentUser = await getCurrentUser();
+const Home: React.FC<HomeProps> = ({ searchParams }) => {
+  const [listings, setListings] = useState<any[]>([]);
+  const [currentUser, setCurrentUser] = useState<any>(null);
 
-  if (listings.length == 0) {
+  useEffect(() => {
+    async function fetchData() {
+      const fetchedListings = await getListings(searchParams);
+      const fetchedCurrentUser = await getCurrentUser();
+      setListings(fetchedListings);
+      setCurrentUser(fetchedCurrentUser);
+    }
+
+    fetchData();
+  }, [searchParams]);
+
+  if (listings.length === 0) {
     return <EmptyState showReset />;
   }
+
   return (
     <Container>
       <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-        {listings.map((listing) => {
-          return (
-            <ListingCard
-              currentUser={currentUser}
-              key={listing.id}
-              data={listing}
-            />
-          );
-        })}
+        {listings.map((listing) => (
+          <ListingCard
+            currentUser={currentUser}
+            key={listing.id}
+            data={listing}
+          />
+        ))}
       </div>
     </Container>
   );
 };
 
 export default Home;
+
+// interface HomeProps {
+//   searchParams: IListingsParams;
+// }
+
+// const Home = async ({ searchParams }: HomeProps) => {
+//   const listings = await getListings(searchParams);
+//   const currentUser = await getCurrentUser();
+
+//   if (listings.length == 0) {
+//     return <EmptyState showReset />;
+//   }
+//   return (
+//     <Container>
+//       <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+//         {listings.map((listing) => {
+//           return (
+//             <ListingCard
+//               currentUser={currentUser}
+//               key={listing.id}
+//               data={listing}
+//             />
+//           );
+//         })}
+//       </div>
+//     </Container>
+//   );
+// };
+
+// export default Home;
