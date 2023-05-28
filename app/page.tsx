@@ -1,3 +1,4 @@
+"use client";
 // export const dynamic = "force-dynamic";
 // 'auto' | 'force-dynamic' | 'error' | 'force-static'
 import getCurrentUser from "./actions/getCurrentUser";
